@@ -9,6 +9,14 @@ import PersonProfile from "./pages/PersonProfile"
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([])
 
+  const hirePerson = (person, wage) => {
+    person.wage = wage
+    
+    const personIsHired = hiredPeople.filter(hiredPerson => hiredPerson.id.value === person.id.value).length > 0
+    if(personIsHired) return
+    setHiredPeople([...hiredPeople, person])
+  }
+  // above, check if person is already hired, if not
   return (
     <>
       <header>
@@ -25,10 +33,10 @@ export default function App() {
       <Routes>
         <Route
         path="/"
-        element={<Dashboard hiredPeople={hiredPeople} / >} />
+        element={<Dashboard hiredPeople={hiredPeople} />} />
         <Route
         path="/view/:id"
-        element={<PersonProfile/>} />
+        element={<PersonProfile hirePerson={hirePerson}/>} />
       </Routes>
       
     </>
