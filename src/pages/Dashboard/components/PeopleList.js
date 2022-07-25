@@ -1,7 +1,11 @@
 import PeopleListItem from "./PeopleListItem"
+//import { useState, useEffect } from "react"
 
 function PeopleList(props) {
   const { people } = props
+
+  
+
 
   return (
     <ul>
