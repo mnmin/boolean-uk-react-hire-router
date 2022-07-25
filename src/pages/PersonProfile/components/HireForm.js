@@ -1,7 +1,12 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import Dashboard from "../../Dashboard"
+
 
 function HireForm(props) {
   const [wage, setWage] = useState(0)
+
+  const navigate = useNavigate()
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -17,7 +22,7 @@ function HireForm(props) {
         onChange={e => setWage(e.target.value)}
         value={wage}
       />
-      <button type="submit">Hire</button>
+      <button onClick={() => navigate("/")}>Hire</button>
     </form>
   )
 }
